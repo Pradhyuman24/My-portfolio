@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pradhyuman Singh | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <!-- Tailwind Config for Custom Colors/Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4f46e5', // Indigo 600
+                        secondary: '#ec4899', // Pink 500
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Custom Utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .dark .glass-nav {
+            background: rgba(17, 24, 39, 0.8); /* gray-900 with opacity */
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Animation utilities */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-primary dark:text-white">
+                        Pradhyuman<span class="text-secondary"> Singh</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="hover:text-primary dark:hover:text-primary transition-colors font-medium">About</a>
+                    <a href="#skills" class="hover:text-primary dark:hover:text-primary transition-colors font-medium">Skills</a>
+                    <a href="#projects" class="hover:text-primary dark:hover:text-primary transition-colors font-medium">Projects</a>
+                    <a href="#contact" class="hover:text-primary dark:hover:text-primary transition-colors font-medium">Contact</a>
+                    
+                    <!-- Dark Mode Toggle Desktop -->
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-gray-600 dark:text-gray-200 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+                <div class="flex items-center px-3 py-2">
+                    <span class="mr-3">Theme:</span>
+                    <button id="mobile-theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
+        <!-- Background Blob Decoration -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob dark:bg-purple-900"></div>
+        <div class="absolute top-20 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000 dark:bg-yellow-900"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000 dark:bg-pink-900"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="mb-6 fade-in-up" style="animation-delay: 0.1s;">
+                <div class="relative inline-block">
+                    <!-- Updated Profile Image: Handsome Sticker Style -->
+                    <div class="w-40 h-40 rounded-full bg-gradient-to-r from-primary to-secondary p-1">
+                        <img src="pradhyuman.jpg" alt="Pradhyuman Singh" class="w-full h-full rounded-full bg-white dark:bg-gray-800 object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-semibold text-primary mb-2 fade-in-up" style="animation-delay: 0.2s;">Hello, I'm Pradhyuman Singh</h2>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up" style="animation-delay: 0.3s;">
+                1st Year <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">B.Tech AI & DS</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10 fade-in-up" style="animation-delay: 0.4s;">
+                Student at <strong>Poornima University</strong>. Enthusiastic about C, Python, and Full Stack Development. Always learning and exploring new technologies.
+            </p>
+            
+            <div class="flex justify-center space-x-4 fade-in-up" style="animation-delay: 0.5s;">
+                <a href="#contact" class="px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-blue-700 transition transform hover:-translate-y-1 shadow-lg">Contact Me</a>
+                <a href="https://github.com/Pradhyuman24" target="_blank" class="px-8 py-3 border border-gray-300 dark:border-gray-600 rounded-full font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition transform hover:-translate-y-1"><i class="fab fa-github mr-2"></i>GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="bg-gray-100 dark:bg-gray-900 rounded-lg p-6 rotate-3 hover:rotate-0 transition-transform duration-500 shadow-xl">
+                   <!-- Decorative code snippet -->
+                   <div class="flex space-x-2 mb-4">
+                       <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                       <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                       <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                   </div>
+                   <code class="text-sm text-gray-600 dark:text-gray-300 font-mono">
+                       <span class="text-secondary">const</span> <span class="text-blue-500">profile</span> = {<br>
+                       &nbsp;&nbsp;name: <span class="text-green-500">'Pradhyuman Singh'</span>,<br>
+                       &nbsp;&nbsp;university: <span class="text-green-500">'Poornima University'</span>,<br>
+                       &nbsp;&nbsp;course: <span class="text-green-500">'B.Tech AI & DS'</span>,<br>
+                       &nbsp;&nbsp;year: <span class="text-purple-500">1</span>,<br>
+                       &nbsp;&nbsp;hobbies: [<span class="text-green-500">'Coding'</span>, <span class="text-green-500">'Learning'</span>]<br>
+                       };
+                   </code>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">My Journey</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        I am currently pursuing my B.Tech in <strong>Artificial Intelligence & Data Science (AI & DS)</strong> at Poornima University. I am in my first year and deeply passionate about technology.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        I have started my journey with foundational languages like <strong>C and Python</strong> and am actively building my skills in Web Development. I am eager to learn new languages and tools as I progress in my degree.
+                    </p>
+                    
+                    <div class="flex space-x-4 mt-8">
+                        <a href="https://github.com/Pradhyuman24" target="_blank" class="text-gray-500 hover:text-primary transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/pradhyuman-singh-57a5a0384?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="text-gray-500 hover:text-primary transition-colors text-2xl"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/pradhyuman9024?igsh=MTRla2g5eTR5Y2NkZQ==" target="_blank" class="text-gray-500 hover:text-primary transition-colors text-2xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">My Skills</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-400">What I have learned so far</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Core Languages -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-300 mb-4 text-2xl">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">C</span>
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">Python</span>
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">JavaScript</span>
+                        <!-- Add more languages here later -->
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center text-green-600 dark:text-green-300 mb-4 text-2xl">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Web Dev</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">HTML</span>
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">CSS</span>
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">Node.js</span>
+                    </div>
+                </div>
+
+                <!-- Tools & Software -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-300 mb-4 text-2xl">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">GitHub</span>
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">VS Code</span>
+                        <span class="skill-pill px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+   <section id="projects" class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Featured Projects</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-400">Here are some projects I'm working on.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOEbTjdEhk4Ph9iCHl2lRo0qmnViQ5nkIj0w&s" alt="Portfolio website Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                            <a href="#" class="p-2 bg-white rounded-full hover:text-primary transition-colors" title="View Code"><i class="fab fa-github"></i></a>
+                            <a href="#" class="p-2 bg-white rounded-full hover:text-primary transition-colors" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Portfolio Website</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">A personal portfolio website to showcase my projects and skills.</p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded">HTML</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded">CSS</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://cdn.activestate.com/wp-content/uploads/2020/06/AutomatableTasks.jpg" alt="Python Automation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                            <a href="#" class="p-2 bg-white rounded-full hover:text-primary transition-colors" title="View Code"><i class="fab fa-github"></i></a>
+                            <a href="#" class="p-2 bg-white rounded-full hover:text-primary transition-colors" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Python Automation</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Future project idea using Python for data tasks</p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaVEbySPpL6thTKRzdESt5v75g5Ie4J_G69w&s" alt="C Programming" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                            <a href="#" class="p-2 bg-white rounded-full hover:text-primary transition-colors" title="View Code"><i class="fab fa-github"></i></a>
+                            <a href="#" class="p-2 bg-white rounded-full hover:text-primary transition-colors" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">C Programming</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-sm">Algorithms and data structures implementation in C</p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded">C</span>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+                <div class="w-16 h-1 bg-primary mx-auto rounded"></div>
+                <p class="mt-4 text-gray-600 dark:text-gray-400">Feel free to contact me!</p>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 relative">
+                <!-- Success Message Overlay -->
+                <div id="success-message" class="absolute inset-0 bg-white dark:bg-gray-800 rounded-xl flex flex-col items-center justify-center hidden z-10 transition-opacity">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-500 mb-4 text-3xl animate-bounce">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Message Sent!</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Thanks for reaching out. I'll get back to you soon.</p>
+                    <button onclick="resetForm()" class="mt-6 text-primary hover:underline">Send another message</button>
+                </div>
+                
+                 <!-- Contact Info Row -->
+                 <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
+                    <a href="mailto:Pradhyuman249@gmail.com" class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-primary transition">
+                        <i class="fas fa-envelope text-xl"></i>
+                        <span>Pradhyuman249@gmail.com</span>
+                    </a>
+                </div>
+
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-colors dark:text-white" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-colors dark:text-white" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                        <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:border-primary focus:ring-2 focus:ring-primary focus:outline-none transition-colors dark:text-white" placeholder="Type your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition transform hover:-translate-y-1 shadow-md">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                <span class="text-xl font-bold text-gray-800 dark:text-white">Pradhyuman<span class="text-secondary"> Singh</span></span>
+                <p class="text-sm text-gray-500 mt-1">Poornima University | B.Tech AI & DS</p>
+                <p class="text-sm text-gray-500">© 2025 Pradhyuman Singh. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="https://github.com/Pradhyuman24" target="_blank" class="text-gray-400 hover:text-primary transition-colors"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://www.linkedin.com/in/pradhyuman-singh-57a5a0384?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="text-gray-400 hover:text-primary transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="https://www.instagram.com/pradhyuman9024?igsh=MTRla2g5eTR5Y2NkZQ==" target="_blank" class="text-gray-400 hover:text-primary transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="mailto:Pradhyuman249@gmail.com" class="text-gray-400 hover:text-primary transition-colors"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- Dark Mode Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const html = document.documentElement;
+
+        // Check local storage or system preference on load
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+
+        // --- Mobile Menu Logic ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+
+        // --- Contact Form Logic (Mock) ---
+        const form = document.getElementById('contact-form');
+        const successMsg = document.getElementById('success-message');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                successMsg.classList.remove('hidden');
+                btn.innerText = originalText;
+                btn.disabled = false;
+                form.reset();
+            }, 1500);
+        });
+
+        function resetForm() {
+            successMsg.classList.add('hidden');
+        }
+
+
+        // --- Intersection Observer for Fade-in Animation on Scroll ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+    </script>
+</body>
+</html>
