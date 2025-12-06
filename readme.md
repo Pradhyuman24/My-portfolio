@@ -1,72 +1,34 @@
-👨‍💻 Pradhyuman Singh - Personal Portfolio
+# 👨‍💻 Pradhyuman Singh - Personal Portfolio
 
-Welcome to my personal portfolio website repository! This fully responsive website showcases my journey as a B.Tech AI & DS student at Poornima University, highlighting my skills, projects, and technical expertise.
+![Portfolio Badge](https://img.shields.io/badge/Status-Active-success) ![License](https://img.shields.io/badge/License-MIT-blue)
 
-🌟 Features
+A fully responsive, modern personal portfolio website designed to showcase my journey as a B.Tech AI & DS student. This project features a dynamic dark/light mode, glassmorphism effects, and smooth interactive animations.
 
-🎨 Modern UI/UX: Built with a clean, modern aesthetic using Tailwind CSS.
+## 🌟 Key Features
 
-🌓 Dark/Light Mode: Fully functional theme toggle with state persistence using LocalStorage.
+* **⚡ Modern UI/UX:** Built with a clean aesthetic using **Tailwind CSS** and custom glassmorphism effects.
+* **🌓 Dark/Light Theme:** Fully functional theme toggle that saves your preference in the browser's LocalStorage.
+* **✨ Interactive Animations:**
+    * **Typewriter Effect:** Dynamic text typing in the hero section ("Coder", "Web Developer", etc.).
+    * **Background Blobs:** Floating, animated gradient blobs for a modern look.
+    * **Scroll Animations:** Elements fade in and slide up as you scroll down.
+* **📏 Scroll Progress Bar:** A visual indicator at the top of the screen showing reading progress.
+* **📱 Fully Responsive:** Optimized for all devices (Mobile, Tablet, Desktop) with a custom mobile navigation menu.
+* **📩 Contact Form UI:** A robust frontend simulation of a contact form with validation and success messages.
 
-📱 Fully Responsive: Optimized for desktops, tablets, and mobile devices.
+## 🛠️ Tech Stack
 
-✨ Glassmorphism: Stylish glass-effect navigation bar.
+* **Structure:** HTML5
+* **Styling:** Tailwind CSS (CDN) & Custom CSS3
+* **Scripting:** Vanilla JavaScript (ES6+)
+* **Icons:** Font Awesome
+* **Fonts:** Google Fonts (via Tailwind default sans)
 
-⚡ Smooth Animations: Fade-in animations on scroll using Intersection Observer.
+## 📂 Project Structure
 
-📝 Contact Form: Includes a functional UI for the contact form with validation and success feedback.
-
-🛠️ Tech Stack
-
-HTML5: Semantic markup for structure.
-
-CSS3: Custom animations, scrollbar styling, and glass effects.
-
-Tailwind CSS: Utility-first CSS framework for styling and dark mode implementation.
-
-JavaScript (Vanilla): DOM manipulation, event handling, and logic for the theme switcher.
-
-Font Awesome: For social icons and UI elements.
-
-📂 Project Structure
-
-├── index.html       # Main HTML structure containing all sections (About, Skills, Projects)
-├── styles.css       # Custom CSS for scrollbars, animations, and specific utilities
-├── script.js        # Logic for Dark Mode, Mobile Menu, Contact Form, and Scroll Observer
-├── Logo.png         # Website Brand Logo
-└── pradhyuman.jpg   # Profile Picture
-
-
-🚀 How to Run
-
-Since this project uses standard HTML, CSS, and JavaScript, no build process or server installation is required.
-
-Clone the repository:
-
-git clone [https://github.com/Pradhyuman24/Portfolio.git](https://github.com/Pradhyuman24/Portfolio.git)
-
-
-Open the project:
-Navigate to the project folder and simply double-click index.html to open it in your web browser.
-
-🎨 Customization
-
-If you wish to use this as a template, you can easily customize the content:
-
-Colors: Modify the tailwind.config script in the <head> of index.html to change primary and secondary brand colors.
-
-Content: Update the text within the HTML sections (About, Skills, Projects).
-
-Images: Replace pradhyuman.jpg and Logo.png with your own assets in the root directory.
-
-📬 Contact Me
-
-Email: Pradhyuman249@gmail.com
-
-LinkedIn: Pradhyuman Singh
-
-GitHub: Pradhyuman24
-
-Instagram: @pradhyuman9024
-
-© 2025 Pradhyuman Singh. All Rights Reserved.
+```text
+├── index.html       # Main HTML structure (Hero, About, Skills, Projects, Contact)
+├── styles.css       # Custom animations, glassmorphism, and scrollbar styles
+├── script.js        # Logic for Dark Mode, Typewriter, Scroll Observer, and Form
+├── pradhyuman.jpg   # Profile Picture
+└── README.md        # Project Documentation
